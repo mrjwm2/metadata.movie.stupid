@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <setting label="Port" type="number" id="port"
+           default="8000" range="1025,65535" />
+</settings>

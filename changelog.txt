@@ -1,2 +1,5 @@
+v1.2.0 (2016-9-10) 
+RELEASE: Switch from yahoo.com to a local echo server to stub out queries
+
 v1.1.0 (2016-2-3) 
 RELEASE: Scrapes <title>
