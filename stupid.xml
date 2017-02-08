@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <scraper name="Stupid Movie Database" content="movies" thumb="icon.png" framework="1.1" language="en">
     <CreateSearchUrl dest="3" clearbuffers="no">
-        <RegExp dest="3" output="&lt;url&gt;http://search.yahoo.com/search?p=$$7&lt;/url&gt;" input="$$7">
+        <RegExp dest="3" output="&lt;url&gt;http://localhost:8000/?filename=$$7&lt;/url&gt;" input="$$7">
             <RegExp dest="7" output="\1" input="$$1">
                 <expression noclean="1" trim="1">(.+)</expression>
             </RegExp>
@@ -10,8 +10,8 @@
     </CreateSearchUrl>
     <GetSearchResults dest="8" clearbuffers="no">
         <RegExp dest="8" output="&lt;results sorted=&quot;yes&quot;&gt;\1&lt;/results&gt;" input="$$5">
-            <RegExp dest="5" output="&lt;entity&gt;&lt;title&gt;\1&lt;/title&gt;&lt;url&gt;http://search.yahoo.com/search?p=$$7&lt;/url&gt;&lt;/entity&gt;" input="$$1">
-                <expression noclean="1" trim="1">&lt;title&gt;([^"]*)\-\sYahoo Search</expression>
+            <RegExp dest="5" output="&lt;entity&gt;&lt;title&gt;\1&lt;/title&gt;&lt;url&gt;http://localhost:8000/?filename=$$7&lt;/url&gt;&lt;/entity&gt;" input="$$1">
+                <expression noclean="1" trim="1">filename: (.*)</expression>
             </RegExp>
             <expression noclean="1"></expression>
         </RegExp>
@@ -19,7 +19,7 @@
     <GetDetails dest="3" clearbuffers="no">
         <RegExp dest="3" output="&lt;details&gt;\1&lt;/details&gt;" input="$$5">
             <RegExp dest="5+" output="&lt;title&gt;\1&lt;/title&gt;" input="$$1">
-                <expression noclean="1" trim="1">&lt;title&gt;(.+)\s\-\sYahoo Search Results&lt;/title&gt;</expression>
+                <expression noclean="1" trim="1">filename: (.*)</expression>
             </RegExp>
             <expression noclean="1" trim="1"></expression>
         </RegExp>
